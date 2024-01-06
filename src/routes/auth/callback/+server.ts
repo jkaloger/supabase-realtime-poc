@@ -1,5 +1,4 @@
 import { redirect, type RequestHandler } from '@sveltejs/kit';
-import type { RequestEvent } from './$types';
 
 export const GET: RequestHandler = async (event) => {
 	const {
