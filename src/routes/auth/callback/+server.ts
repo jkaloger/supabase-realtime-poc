@@ -1,4 +1,5 @@
 import { redirect, type RequestHandler } from '@sveltejs/kit';
+import type { RequestEvent } from './$types';
 
 export const GET: RequestHandler = async (event) => {
 	const {
@@ -15,5 +16,5 @@ export const GET: RequestHandler = async (event) => {
 	}
 
 	// return the user to an error page with instructions
-	// throw redirect(303, '/auth/auth-code-error');
+	throw redirect(303, '/auth/auth-code-error');
 };

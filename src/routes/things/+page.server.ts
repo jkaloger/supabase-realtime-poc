@@ -16,7 +16,7 @@ export const actions = {
 		const data = await request.formData();
 		const user = await getSession();
 
-		const name = data.get('name');
+		const name = data.get('name')?.toString();
 		const result = await supabase
 			.from('thing')
 			.insert({ name: name, created_by: user?.user.email ?? '' });

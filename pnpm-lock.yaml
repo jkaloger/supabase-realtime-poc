@@ -31,6 +31,9 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^6.0.0
     version: 6.18.0(eslint@8.56.0)(typescript@5.3.3)
+  cookie:
+    specifier: ^0.6.0
+    version: 0.6.0
   eslint:
     specifier: ^8.56.0
     version: 8.56.0
