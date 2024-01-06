@@ -1,10 +1,11 @@
+import { VERCEL_URL } from '$env/static/private';
 import { redirect, type ServerLoad } from '@sveltejs/kit';
 
 export const GET: ServerLoad = async ({ locals: { supabase } }) => {
 	const result = await supabase.auth.signInWithOAuth({
 		provider: 'github',
 		options: {
-			redirectTo: 'http://localhost:5173/auth/callback'
+			redirectTo: `${VERCEL_URL} ?? 'http://localhost:5173'/auth/callback`
 		}
 	});
 
