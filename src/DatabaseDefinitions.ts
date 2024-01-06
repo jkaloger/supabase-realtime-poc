@@ -12,16 +12,19 @@ export interface Database {
       thing: {
         Row: {
           created_at: string
+          created_by: string | null
           id: number
           name: string | null
         }
         Insert: {
           created_at?: string
+          created_by?: string | null
           id?: number
           name?: string | null
         }
         Update: {
           created_at?: string
+          created_by?: string | null
           id?: number
           name?: string | null
         }

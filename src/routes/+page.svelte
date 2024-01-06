@@ -1,6 +1,4 @@
-<script lang="ts">
-	export let data;
+<h1>👋 Hiya</h1>
 
-	let { user, things } = data;
-</script>
+<a href="/login">Login</a>
 
