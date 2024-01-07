@@ -6,6 +6,9 @@ trying out 2 techs
   - Websockets (realtime)
 - Svelte
 
+Add `Things` to a list, collaborate with others to add more `Things`.
+Live Cursors, live updates to `Things` list.
+
 ### Running
 
 ```bash
