@@ -1,15 +1,17 @@
 <!-- src/routes/profile/+page.svelte -->
+
 <script lang="ts">
+	import * as Card from '$lib/components/ui/card';
 	import type { RealtimePostgresInsertPayload } from '@supabase/supabase-js';
 	import type { Database } from '../../DatabaseDefinitions.js';
 
-	let { data } = $props();
-	let { things: initial_things, user, supabase } = data;
+	export let data;
+	let { user, supabase } = data;
 
-	let things = $state(initial_things);
+	$: things = data.things;
 
 	// Listen to inserts
-	supabase
+	$: supabase
 		.channel('thing')
 		.on(
 			'postgres_changes',
@@ -25,5 +27,23 @@
 	<button>Add Thing :)</button>
 </form>
 
-<pre>{JSON.stringify(things, null, 2)}</pre>
+<h1>Things</h1>
+<div>
+	{#if things}
+		{#each things as thing}
+			<Card.Root>
+				<Card.Header>
+					<Card.Title>{thing.name}</Card.Title>
+					<Card.Description>Card Description</Card.Description>
+				</Card.Header>
+				<Card.Content>
+					<p>Card Content</p>
+				</Card.Content>
+				<Card.Footer>
+					<p>Card Footer</p>
+				</Card.Footer>
+			</Card.Root>
+		{/each}
+	{/if}
+</div>
 <pre>{JSON.stringify(user, null, 2)}</pre>
