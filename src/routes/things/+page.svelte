@@ -1,19 +1,22 @@
 <!-- src/routes/profile/+page.svelte -->
 <script lang="ts">
+	import type { RealtimePostgresInsertPayload } from '@supabase/supabase-js';
+	import type { Database } from '../../DatabaseDefinitions.js';
+
 	let { data } = $props();
-	let { things: initial_things, supabase } = data;
+	let { things: initial_things, user, supabase } = data;
 
 	let things = $state(initial_things);
-
-	// Create a function to handle inserts
-	const handleInserts = (payload) => {
-		things.push(payload.new);
-	};
 
 	// Listen to inserts
 	supabase
 		.channel('thing')
-		.on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'thing' }, handleInserts)
+		.on(
+			'postgres_changes',
+			{ event: 'INSERT', schema: 'public', table: 'thing' },
+			(payload: RealtimePostgresInsertPayload<Database['public']['Tables']['thing']['Row']>) =>
+				things?.push(payload.new)
+		)
 		.subscribe();
 </script>
 

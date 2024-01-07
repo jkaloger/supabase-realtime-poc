@@ -4,7 +4,7 @@ import { redirect, type ServerLoad } from '@sveltejs/kit';
 export const GET: ServerLoad = async ({ locals: { supabase } }) => {
 	console.log(`${VERCEL_URL}/auth/callback`);
 	const result = await supabase.auth.signInWithOAuth({
-		provider: 'github',
+		provider: 'discord',
 		options: {
 			redirectTo: `${VERCEL_URL}/auth/callback`
 		}

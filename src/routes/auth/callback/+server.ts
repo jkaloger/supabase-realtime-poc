@@ -9,6 +9,7 @@ export const GET: RequestHandler = async (event) => {
 
 	if (code) {
 		const { error } = await supabase.auth.exchangeCodeForSession(code);
+		console.log({ error })
 		if (!error) {
 			throw redirect(303, `/things`);
 		}
