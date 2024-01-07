@@ -2,6 +2,7 @@
 
 trying out 2 techs
 - supabase
+  - Auth (Discord)
   - Postgres DB
   - Websockets (realtime)
 - Svelte
