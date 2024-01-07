@@ -1,8 +1,20 @@
 <!-- src/routes/profile/+page.svelte -->
 <script lang="ts">
-	export let data;
+	let { data } = $props();
+	let { things: initial_things, supabase } = data;
 
-	const { user, things } = data;
+	let things = $state(initial_things);
+
+	// Create a function to handle inserts
+	const handleInserts = (payload) => {
+		things.push(payload.new);
+	};
+
+	// Listen to inserts
+	supabase
+		.channel('thing')
+		.on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'thing' }, handleInserts)
+		.subscribe();
 </script>
 
 <form method="POST" action="?/add_thing">
