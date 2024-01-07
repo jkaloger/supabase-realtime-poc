@@ -25,12 +25,19 @@
 		.subscribe();
 </script>
 
-<form method="POST" action="?/add_thing">
-	<div class="mx-auto my-4 flex w-1/2 flex-col gap-2">
-		<Input type="text" placeholder="Thing Name" name="name" />
-		<Button>Add Thing :)</Button>
+<div class="sticky flex h-16 items-center justify-center gap-2 bg-slate-500 px-4">
+	<img src={user?.user_metadata?.avatar_url} alt="profile pic" class="h-8 w-8 rounded-full" />
+	<div class="self-center">
+		<h1 class="text-sm text-white">{user?.email}</h1>
 	</div>
-</form>
+	<div class="grow" />
+	<form method="POST" action="?/add_thing">
+		<div class="mx-auto my-4 flex gap-2">
+			<Input type="text" placeholder="Thing Name" name="name" />
+			<Button>Add Thing :)</Button>
+		</div>
+	</form>
+</div>
 
 <div class="m-4 grid grid-cols-2 gap-4">
 	<div class="flex flex-col gap-2">
@@ -46,4 +53,3 @@
 		{/if}
 	</div>
 </div>
-<pre>{JSON.stringify(user, null, 2)}</pre>
