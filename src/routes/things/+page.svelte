@@ -43,7 +43,7 @@
 					})
 					.catch(() => {});
 				console.log({ x, y });
-			}, 1000 / 3);
+			}, 1000 / 6);
 			const moveHandler = (e: MouseEvent) => {
 				const [x, y] = [e.clientX, e.clientY];
 				sendMouseBroadcast({ x, y });
@@ -63,7 +63,7 @@
 <!-- for each cursor, render it at its offset -->
 {#each Object.values(cursors) as cursor}
 	<div
-		class="absolute h-4 w-4 rounded-full bg-red-500 transition-all duration-75"
+		class="absolute h-4 w-4 rounded-full bg-red-500 transition-all duration-300"
 		style="top: {cursor.y}px; left: {cursor.x}px"
 	/>
 {/each}
