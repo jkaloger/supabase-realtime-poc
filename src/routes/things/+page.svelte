@@ -1,5 +1,3 @@
-<!-- src/routes/profile/+page.svelte -->
-
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import { Input } from '$lib/components/ui/input';
@@ -45,7 +43,7 @@
 					})
 					.catch(() => {});
 				console.log({ x, y });
-			}, 1000 / 24);
+			}, 1000 / 3);
 			const moveHandler = (e: MouseEvent) => {
 				const [x, y] = [e.clientX, e.clientY];
 				sendMouseBroadcast({ x, y });
