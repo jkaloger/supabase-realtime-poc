@@ -77,7 +77,7 @@
 	<form method="POST" action="?/add_thing">
 		<div class="mx-auto my-4 flex gap-2">
 			<Input type="text" placeholder="Thing Name" name="name" />
-			<button class="color-white whitespace-nowrap bg-black">Add Thing :)</button>
+			<button class="whitespace-nowrap rounded-md bg-black text-white">Add Thing :)</button>
 		</div>
 	</form>
 </div>
